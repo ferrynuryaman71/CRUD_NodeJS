@@ -16,7 +16,7 @@ const client = new MongoClient('mongodb://localhost:27017', { useNewUrlParser: t
 	  $set: {
 	  	nama	: 'Ferry'
 	  }
-	}, {
+	}, {	
 		returnOriginal : false
 	}).then((result) => {
 		console.log(result)
