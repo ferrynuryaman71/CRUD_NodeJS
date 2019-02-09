@@ -26,9 +26,8 @@ const client = new MongoClient('mongodb://localhost:27017', { useNewUrlParser: t
 
 //Create Data
  db.collection('User').insertOne({
-  _id		: 5,
- 	nama	: 'ferry',
- 	age		: 19,
+ 	email	: 'ferry12@gmail.com',
+ 	password	: 12345,
  	location: 'Yogyakarta'
  },   (err, result) => {
  	if (err) {
