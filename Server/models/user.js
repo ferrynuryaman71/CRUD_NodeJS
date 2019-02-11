@@ -7,7 +7,6 @@ var User = mongoose.model('User', {
 		trim : true,
 		minlength : 1
 	},
-
 })
 
 module.exports = {User}
