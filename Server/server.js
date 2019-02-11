@@ -12,24 +12,24 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
-  var todo = new Todo({
-    text: req.body.text
-  });
-
-  todo.save().then((doc) => {
-    res.send(doc);
-  }, (e) => {
-    res.status(400).send(e);
-  });
+	 var todo = new Todo({
+		text: req.body.text
+	});
+	todo.save().then((doc) => {
+		res.send(doc);
+	}, (e) => {
+		res.status(400).send(e);
+	});
 });
 
-app.get('/todos', (req, res) => {
-  Todo.find().then((todos) => {
-    res.send({todos});
-  }, (e) => {
-    res.status(400).send(e);
-  });
+app.get('/todos/:id', (req, res) => {
+	Todo.find().then((todos) => {
+		res.send({todos})
+	}, (e) => {
+		res.status(400).send(e);
+	});
 });
+
 
 app.get('/todos/:id', (req, res) => {
   var id = req.params.id;
@@ -49,8 +49,40 @@ app.get('/todos/:id', (req, res) => {
   });
 });
 
+
 app.listen(port, () => {
-  console.log(`Started up at port ${port}`);
+	console.log(`started on port ${port}`);
 });
 
 module.exports = {app};
+
+// var newAccount = new Account({
+// 	text : 'cooking dinner'
+// });
+
+// newAccount.save().then((doc) => {
+// 	console.log('save Account', doc);
+// }, (e) => {
+// 	console.log('unable to save Account');
+// });
+
+// var newAccount = new Account({
+// 	text : 'you can do it'
+// })
+
+// newAccount.save().then((doc) => {
+// 	console.log(JSON.stringify(doc, undefined, 2))
+// }, (e) => {
+// 	console.log('save User not succses')
+// })
+
+
+// var newUser = new User({
+// 	email : 'ferry12@gmail.com'
+// });
+
+// newUser.save().then((doc) => {
+// 	console.log('create user succes', doc)
+// }, (e) => {
+// 	console.log('create account not succes', e)
+// })
